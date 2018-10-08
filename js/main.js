@@ -44,14 +44,24 @@ function Job(company, date, title, link, notes){
 }
 
 // Pushes new object to array
+
 function pushToArray(arr, object){
 	arr.push(object);
 }
 
+
+
 // Function for button, creates constructor
 
-
 function createJob() {
+
+	// Creates new job from inputs
+	var newObj = new Job(getCompany.value, getDate.value, getJobTitle.value, getAppLink.value, getNotes.value)
+
+	console.log(newJob)
+
+
+	for(prop in newObj){
 
 	var createLeftDiv = document.createElement('div');
 	var createRightDiv = document.createElement('div');
@@ -61,36 +71,34 @@ function createJob() {
 
 	var createNotesLabel = document.createElement('h5');
 	var createNotes = document.createElement('p');
-
 	var createRatingsLabel = document.createElement('h5');
 
-	for(i=0; i<=newJob.length; i++){
 
-	// Creates new job from inputs
-	var newObj = new Job(getCompany.value, getDate.value, getJobTitle.value, getAppLink.value, getNotes.value)
-
+	console.log(newObj.company);
+	break;
 
 
-
-	createCompany.innerText = newJob[i].company;
-	createDate.innerText = newJob[i].date;
-	
-	console.log(newJob.length);
-	
-	createLeftDiv.appendChild(createCompany);
-	createLeftDiv.appendChild(createDate);
-
-	document.getElementById('jobList').appendChild(createLeftDiv);
-	// document.getElementById('jobList').appendChild(createRightDiv);
-break;
 	}
+
+
 	
 };
 
 
+// function createHTML(arr){
+	
+	
 
+// 	createCompany.textContent = arr[0].company;
+// 	createDate.textContent = arr[0].date;
 
+	
+// 	createLeftDiv.appendChild(createCompany);
+// 	createLeftDiv.appendChild(createDate);
 
+// 	document.getElementById('jobList').appendChild(createLeftDiv);
+// 	document.getElementById('jobList').appendChild(createRightDiv);
+// }
 
 
 
