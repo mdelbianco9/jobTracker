@@ -73,6 +73,16 @@ function createJob() {
 	var createNotes = document.createElement('p');
 	var createRatingsLabel = document.createElement('h5');
 
+	createCompany.textContent = newObj.company;
+	createDate.textContent = newObj.date;
+
+	
+	createLeftDiv.appendChild(createCompany);
+	createLeftDiv.appendChild(createDate);
+
+	document.getElementById('jobList').appendChild(createLeftDiv);
+	document.getElementById('jobList').appendChild(createRightDiv);
+
 
 	console.log(newObj.company);
 	break;
