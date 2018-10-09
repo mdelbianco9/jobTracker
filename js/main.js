@@ -35,7 +35,7 @@ function Job(company, date, title, link, notes){
 	this.date = date; 
 	this.jobTitle = title;
 	this.jobLink = link;
-	this. notes = notes;
+	this.notes = notes;
 	// function that creates text box
 	// function toggle close button 
 
@@ -68,20 +68,55 @@ function createJob() {
 
 	var createCompany = document.createElement('h2');
 	var createDate = document.createElement('h6');
+	var createTitle = document.createElement('h5');
 
 	var createNotesLabel = document.createElement('h5');
-	var createNotes = document.createElement('p');
+	var createNotes = document.createElement('textarea');
 	var createRatingsLabel = document.createElement('h5');
 
-	createCompany.textContent = newObj.company;
-	createDate.textContent = newObj.date;
+	var createCloseBtn = document.createElement('button');
+
+
 
 	
+	createCompany.textContent = newObj.company;
+	createCompany.classList.add('company');
+
+	createDate.textContent = "Date Applied: " + newObj.date;
+	createDate.classList.add('date');
+
+	createNotesLabel.textContent = "Notes";
+	createNotesLabel.classList.add('notesLabel')
+	createNotes.textContent = newObj.notes;
+	createNotes.classList.add('notes', 'form-control');
+
+	createTitle.textContent = newObj.jobTitle;
+
+
+
+	createRatingsLabel.textContent = "Rating";
+	// Rating stars
+
+
+	createCloseBtn.textContent = "Close";
+	createCloseBtn.classList.add('btn', 'btn-danger', 'btn-sm', 'closeBtn')
+
+
+
+	createLeftDiv.classList.add('leftDiv')
+
+
+
 	createLeftDiv.appendChild(createCompany);
+	createLeftDiv.appendChild(createCloseBtn);
 	createLeftDiv.appendChild(createDate);
+	createLeftDiv.appendChild(createTitle);
+	createLeftDiv.appendChild(createNotesLabel);
+	createLeftDiv.appendChild(createNotes);
+	createLeftDiv.appendChild(createRatingsLabel);
+	
 
 	document.getElementById('jobList').appendChild(createLeftDiv);
-	document.getElementById('jobList').appendChild(createRightDiv);
 
 
 	console.log(newObj.company);
