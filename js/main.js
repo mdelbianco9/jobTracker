@@ -90,16 +90,16 @@ function createJob() {
 	createNotes.textContent = newObj.notes;
 	createNotes.classList.add('notes', 'form-control');
 
-	createTitle.textContent = newObj.jobTitle;
+	createTitle.textContent = "Position type: " + newObj.jobTitle;
 
 
 
-	createRatingsLabel.textContent = "Rating";
+	// createRatingsLabel.textContent = "Rating";
 	// Rating stars
 
 
 	createCloseBtn.textContent = "Close";
-	createCloseBtn.classList.add('btn', 'btn-danger', 'btn-sm', 'closeBtn')
+	createCloseBtn.classList.add('btn', 'btn-yellow', 'btn-sm', 'closeBtn')
 
 
 
@@ -130,20 +130,7 @@ function createJob() {
 };
 
 
-// function createHTML(arr){
-	
-	
 
-// 	createCompany.textContent = arr[0].company;
-// 	createDate.textContent = arr[0].date;
-
-	
-// 	createLeftDiv.appendChild(createCompany);
-// 	createLeftDiv.appendChild(createDate);
-
-// 	document.getElementById('jobList').appendChild(createLeftDiv);
-// 	document.getElementById('jobList').appendChild(createRightDiv);
-// }
 
 
 
