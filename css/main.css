@@ -18,8 +18,10 @@
 	top: 0px;
 	bottom: 0px;
 	padding: 2%;
+	padding-left: 1.5%;
+	/*padding-top: 0%;*/
 	color: #fff;
-	background-color: #34495e;
+	background-color: #2c3e50;
 	font-family: 'Niramit', sans-serif;
 	/*border-right: 5px solid #252525;*/
 	box-shadow: 6px 0 10px -2px grey;
@@ -86,7 +88,97 @@
 	color: #8a8b1b;
 }
 
+.form-wrapper{
+	width: 90%;
+	display: inline-block;
+	/*padding-top: 5%;*/
+}
 
+.side-nav{
+	width: 8%;
+	display: inline-block;
+	/*border: 1px solid white;*/
+}
+
+
+.menu {
+  position: fixed;
+  height: 100%;
+  width: 20px;
+  padding-top: 2%;
+  background: #2c3e50;
+  transition:width 1s;
+  overflow: hidden;
+  font-family: 'Michroma', sans-serif;
+  z-index: 99;
+}
+
+.menu:hover {
+  width: 220px;
+}
+
+.menuItem span {
+  position: absolute;
+  left:80px;
+  top:20px;
+  transition:color 1s;
+  color:rgba(255,255,255,0);
+}
+
+.menu:hover .menuItem  span {
+ color:rgba(255,255,255,1);
+}
+
+.menuItem {
+  position: relative;
+  padding: 20px;
+  transition:border .5s, background .2s;  
+}
+
+.menuItem:hover {
+  background: #34495e;
+  cursor: pointer;
+}
+
+.uno {
+  border-left:7px solid #16a085;
+}
+
+.uno:hover{
+  border-left:20px solid #16a085;
+}
+
+.dos {
+ border-left:7px solid #2980b9;
+}
+
+.dos:hover {
+ border-left:20px solid #2980b9;
+}
+
+.tres {
+  border-left:7px solid #8e44ad;
+}
+
+.tres:hover {
+  border-left:20px solid #8e44ad;
+}
+
+.cuatro {
+  border-left:7px solid #e67e22;
+}
+
+.cuatro:hover {
+  border-left:20px solid #e67e22;
+}
+
+.cinco {
+ border-left:7px solid #e74c3c;
+}
+
+.cinco:hover {
+ border-left:20px solid #e74c3c;
+}
 
 
 

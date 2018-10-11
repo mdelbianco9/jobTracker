@@ -20,28 +20,40 @@
 	<div class="container-fluid">
 		<div class="row">
 			<section class="col-md-5" id="jobEntry">
-				<!-- <h2>Job Tracker</h2> -->
-				<div class="form-group">
-				  <label for="usr">Company</label>
-				  <input type="text" class="form-control" id="company">
+				<div class="row">
+					<nav class="side-nav">
+						<div class="menu">
+						  <div class="menuItem uno">Sort:<span>Company</span></div>
+						  <div class="menuItem dos">Sort:<span>Date</span></div>
+						  <div class="menuItem tres">Sort<span>Position</span></div>
+						  <div class="menuItem cuatro">Change<span>Theme</span></div>
+						  <div class="menuItem cinco">Reset<span>Theme</span></div>
+						</div>
+					</nav>
+					<div class="form-wrapper">
+						<div class="form-group">
+						  <label for="usr">Company</label>
+						  <input type="text" class="form-control" id="company">
+						</div>
+						<div class="form-group">
+						  <label for="pwd">Date Applied</label>
+						  <input class="form-control w-25" placeholder="DD/MM/YYYY" id="date">
+						</div>
+						<div class="form-group">
+						  <label for="pwd">Job Title</label>
+						  <input class="form-control" id="jobTitle">
+						</div>
+						<div class="form-group">
+						  <label for="pwd">Application Link</label>
+						  <input class="form-control" id="appLink">
+						</div>
+						<div class="form-group">
+						  <label for="pwd">Notes</label>
+						  <textarea class="form-control" id="notes"></textarea>
+						</div>
+						<button type="button" class="btn btn-green btn-lg" onclick="createJob()">Submit Job</button>
+					</div>
 				</div>
-				<div class="form-group">
-				  <label for="pwd">Date Applied</label>
-				  <input class="form-control w-25" placeholder="DD/MM/YYYY" id="date">
-				</div>
-				<div class="form-group">
-				  <label for="pwd">Job Title</label>
-				  <input class="form-control" id="jobTitle">
-				</div>
-				<div class="form-group">
-				  <label for="pwd">Application Link</label>
-				  <input class="form-control" id="appLink">
-				</div>
-				<div class="form-group">
-				  <label for="pwd">Notes</label>
-				  <textarea class="form-control" id="notes"></textarea>
-				</div>
-				<button type="button" class="btn btn-green btn-lg" onclick="createJob()">Submit Job</button>
 
 			</section>
 			<section class="col-md-7" id="jobList" height='100'></section>
