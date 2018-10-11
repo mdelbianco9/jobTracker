@@ -19,7 +19,7 @@
 	bottom: 0px;
 	padding: 2%;
 	color: #fff;
-	background-color: #397fdf;
+	background-color: #34495e;
 	font-family: 'Niramit', sans-serif;
 	/*border-right: 5px solid #252525;*/
 	box-shadow: 6px 0 10px -2px grey;
@@ -35,9 +35,10 @@
 	margin: 15px;
 	padding: 10px;
 	/*border: 1px solid #707070;*/
-	background-color: #9cdfa0;
-	color: #616161;
+	background-color: #60a784;
+	color: #f8fbf9;
 	box-shadow: 0 8px 6px -6px grey;
+	transition: all 0.5s ease-in-out;
 }
 
 .company{
@@ -66,7 +67,7 @@
 	height: 100px;
 	border-radius: 0px;
 	background-color: #f3f3f3;
-	opacity: .6;
+	opacity: .7;
 }
 
 
@@ -82,7 +83,7 @@
 
 .btn-yellow{
 	background-color: #e6e600;
-	color: #878787;
+	color: #8a8b1b;
 }
 
 
