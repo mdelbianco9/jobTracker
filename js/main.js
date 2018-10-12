@@ -1,21 +1,6 @@
 
-
-var newJob = [];
-
-var demoObj = {
-	company: "",
-	date: '',
-	jobTitle: '',
-	link: '',
-	notes: '',
-	rating: '',
-	closed: '',
-}
-
-// Calculates rating
-	// getRating: function(){}
-	// Toggle: makes closed true or false
-	// getStatus: function(){}
+// Holds the new const Objs created by clicking on Submit
+var newJobArray = [];
 
 
  // Gets info from Inputs 
@@ -38,7 +23,8 @@ function Job(company, date, title, link, notes){
 	// function that creates text box
 	// function toggle close button 
 
-	pushToArray(newJob, this);
+	// Pushes obj to newJobArray array
+	pushToArray(newJobArray, this);
 
 }
 
@@ -51,19 +37,20 @@ function pushToArray(arr, object){
 
 
 // Function for button, creates constructor
-
+var counter = 0;
 function createJob() {
 
 	// Creates new job from inputs
 	var newObj = new Job(getCompany.value, getDate.value, getJobTitle.value, getAppLink.value, getNotes.value)
 
-	console.log(newJob)
+	console.log(newJobArray)
 
-
+	// Goes through the newly created Constr Obj and does stuff 
 	for(prop in newObj){
 
-		var createLeftDiv = document.createElement('div');
-		var createRightDiv = document.createElement('div');
+
+		var createLeftDiv = document.createElement('li');
+		var createRightDiv = document.createElement('li');
 
 		var createCompany = document.createElement('h2');
 		var createDate = document.createElement('h6');
@@ -75,22 +62,29 @@ function createJob() {
 
 		var createCloseBtn = document.createElement('button');
 
+		// Company
 		createCompany.textContent = newObj.company;
 		createCompany.classList.add('company');
 
+		// Date
 		createDate.textContent = "Date Applied: " + newObj.date;
 		createDate.classList.add('date');
 
+		// NotesLabel & Notes
 		createNotesLabel.textContent = "Notes";
 		createNotesLabel.classList.add('notesLabel')
 		createNotes.textContent = newObj.notes;
 		createNotes.classList.add('notes', 'form-control');
 
+		// Job Title
 		createTitle.textContent = "Position type: " + newObj.jobTitle;
+		createTitle.classList.add('title')
 
+		// Yellow Close Btn
 		createCloseBtn.textContent = "Close";
 		createCloseBtn.classList.add('btn', 'btn-yellow', 'btn-md', 'closeBtn');
 
+		// Newly Created Job
 		createLeftDiv.classList.add('leftDiv', 'animated', 'fadeIn');
 
 		createLeftDiv.appendChild(createCompany);
@@ -104,23 +98,25 @@ function createJob() {
 
 		document.getElementById('jobList').appendChild(createLeftDiv);
 
-		console.log(newObj.company);
+		// Gives an id number to each created obj/div
+		newObj.id=counter;
+
 		break;
+	}
+
+	var selectBtn = document.querySelectorAll('.btn-yellow');
+	var selectLi = document.querySelectorAll('.leftDiv');
+	
+	for(i=0; i<selectBtn.length; i++){
+		selectBtn[i].addEventListener('click', function(){
+			var div = this.parentElement;
+	    	div.style.backgroundColor = "#e74c3c";
+	    	console.log(selectBtn)
+		})
 	}
 };
 
 
-// Close Btn function
-
-function closeBtn(){
-	var counter = 0;
-
-}
-
-
-$(".btn-green").click(function(){
-    $(".leftDiv").fadeIn();
-});
 
 
 
