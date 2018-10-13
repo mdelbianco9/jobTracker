@@ -104,18 +104,18 @@ function createJob() {
 		break;
 	}
 
-	// var selectBtn = document.querySelectorAll('.btn-yellow');
-	// var selectLi = document.querySelectorAll('.leftDiv');
+	var selectBtn = document.querySelectorAll('.btn-yellow');
+	var selectLi = document.querySelectorAll('.leftDiv');
 	
-	// for(i=0; i<selectBtn.length; i++){
-	// 	selectBtn[i].addEventListener('click', function(){
-	// 		var div = this.parentElement;
-	//     	var on = div.style.backgroundColor = "#e74c3c";
-	//     	// div.classList.toggle('changeLeftDivBg')
-	//     	console.log(selectBtn)
+	for(i=0; i<selectBtn.length; i++){
+		selectBtn[i].addEventListener('click', function(){
+			var div = this.parentElement;
+	    	var on = div.style.display = "none";
+	    	// div.classList.toggle('changeLeftDivBg')
+	    	console.log(selectBtn)
 
-	// 	})
-	// }
+		})
+	}
 };
 
 var list = document.querySelector('ul');
