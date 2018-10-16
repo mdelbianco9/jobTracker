@@ -71,8 +71,6 @@ function createJob() {
 		createDate.classList.add('date');
 
 		// NotesLabel & Notes
-		createNotesLabel.textContent = "Notes";
-		createNotesLabel.classList.add('notesLabel')
 		createNotes.textContent = newObj.notes;
 		createNotes.classList.add('notes', 'form-control');
 
