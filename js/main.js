@@ -125,34 +125,34 @@ list.addEventListener('click', function(ev) {
 }, false);
 
 
-var meObj = [
-	{
-		company: "tesla",
-		job: "design"
-	},
-	{
-		company: "google",
-		job: "front"
-	},
-	{
-		company: "apple",
-		job: "design"
+
+// Copy newJobArray
+function copy(arr){
+	var copy = [];
+	for(i=0; i<arr.length; i++){
+		copy.push(arr[i]);
 	}
-];
-
-// Sorts a function based on company
-function compare(a,b) {
-  if (a.company < b.company)
-    return -1;
-  if (a.company > b.company)
-    return 1;
-  return 0;
-}
-
-function help(a){
-	return a.sort(compare);
+	return copy;
 }
 
 
+// Dynamic sort function
+function sortBy(array, prop){
+	array.sort(
+		function(a,b){
+			var getA = a[prop].toUpperCase();
+			var getB = b[prop].toUpperCase();
+			  if (getA > getB){
+			  	 return 1;
+			  }else {
+			    return -1;
+			}
+		}
+	);
+	return array;
+}
 
-console.log(help(newJobArray))
+
+
+
+
