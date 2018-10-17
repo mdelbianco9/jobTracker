@@ -83,7 +83,7 @@ function createJob() {
 		createCloseBtn.classList.add('btn', 'btn-yellow', 'btn-md', 'closeBtn');
 
 		// Newly Created Job
-		createLeftDiv.classList.add('leftDiv', 'animated', 'fadeIn');
+		createLeftDiv.classList.add('leftDiv', 'animated', 'fadeOut');
 
 		createLeftDiv.appendChild(createCompany);
 		createLeftDiv.appendChild(createCloseBtn);
@@ -120,11 +120,39 @@ var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
     ev.target.classList.toggle('changeLeftDivBg');
-    console.log("hiiii")
     console.log(ev.target);
   }
 }, false);
 
 
+var meObj = [
+	{
+		company: "tesla",
+		job: "design"
+	},
+	{
+		company: "google",
+		job: "front"
+	},
+	{
+		company: "apple",
+		job: "design"
+	}
+];
+
+// Sorts a function based on company
+function compare(a,b) {
+  if (a.company < b.company)
+    return -1;
+  if (a.company > b.company)
+    return 1;
+  return 0;
+}
+
+function help(a){
+	return a.sort(compare);
+}
 
 
+
+console.log(help(newJobArray))
