@@ -125,7 +125,6 @@ list.addEventListener('click', function(ev) {
 }, false);
 
 
-
 // Copy newJobArray
 function copy(arr){
 	var copy = [];
@@ -137,21 +136,33 @@ function copy(arr){
 
 
 // Dynamic sort function
-function sortBy(array, prop){
-	array.sort(
+function sortBy(someObjArray, prop){
+	someObjArray.sort(
 		function(a,b){
-			var getA = a[prop].toUpperCase();
-			var getB = b[prop].toUpperCase();
-			  if (getA > getB){
+			  if (a[prop].toUpperCase() > b[prop].toUpperCase()){
 			  	 return 1;
 			  }else {
 			    return -1;
 			}
 		}
 	);
-	return array;
+	return someObjArray;
 }
 
+// WHy doesnt this work? Scope? 
+var sortCompany = sortBy(copy(newJobArray), "company");
+
+// Trying to get the sort function to work on the click of a button
+// function funcOne(arr, prop, sort){
+// 	console.log(sort(arr, prop));
+// }
+
+// funcOne(newJobArray, "company", sortBy);
+
+// It works!!!
+document.getElementById('sortCompany').addEventListener('click', function(){
+	console.log(sortBy(copy(newJobArray), "company")); 
+})
 
 
 
