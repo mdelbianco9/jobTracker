@@ -2,10 +2,10 @@
 // Holds the new const Objs created by clicking on Submit
 var newJobArray = [];
 
-
+var date = new Date();
  // Gets info from Inputs 
 var getCompany = document.getElementById('company');
-var getDate = document.getElementById('date');
+var getDate = date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
 var getJobTitle = document.getElementById('jobTitle');
 var getAppLink = document.getElementById('appLink');
 var getNotes = document.getElementById('notes');
@@ -41,7 +41,7 @@ var counter = 0;
 function createJob() {
 
 	// Creates new job from inputs
-	var newObj = new Job(getCompany.value, getDate.value, getJobTitle.value, getAppLink.value, getNotes.value)
+	var newObj = new Job(getCompany.value, getDate, getJobTitle.value, getAppLink.value, getNotes.value)
 
 	console.log(newJobArray)
 
@@ -99,21 +99,22 @@ function createJob() {
 		// Gives an id number to each created obj/div
 		newObj.id=counter;
 
+
 		break;
 	}
 
-	var selectBtn = document.querySelectorAll('.btn-yellow');
-	var selectLi = document.querySelectorAll('.leftDiv');
+	// var selectBtn = document.querySelectorAll('.btn-yellow');
+	// var selectLi = document.querySelectorAll('.leftDiv');
 	
-	for(i=0; i<selectBtn.length; i++){
-		selectBtn[i].addEventListener('click', function(){
-			var div = this.parentElement;
-	    	var on = div.style.display = "none";
-	    	// div.classList.toggle('changeLeftDivBg')
-	    	console.log(selectBtn)
+	// for(i=0; i<selectBtn.length; i++){
+	// 	selectBtn[i].addEventListener('click', function(){
+	// 		var div = this.parentElement;
+	//     	var on = div.style.display = "none";
+	//     	// div.classList.toggle('changeLeftDivBg')
+	//     	console.log(selectBtn)
 
-		})
-	}
+	// 	})
+	// }
 };
 
 var list = document.querySelector('ul');
@@ -149,21 +150,96 @@ function sortBy(someObjArray, prop){
 	return someObjArray;
 }
 
-// WHy doesnt this work? Scope? 
-var sortCompany = sortBy(copy(newJobArray), "company");
+function createSortedJobs(newObj) {
 
-// Trying to get the sort function to work on the click of a button
-// function funcOne(arr, prop, sort){
-// 	console.log(sort(arr, prop));
-// }
+	// Goes through the newly created Constr Obj and does stuff 
+	for(i=0; i<newObj.length; i++){
 
-// funcOne(newJobArray, "company", sortBy);
 
-// It works!!!
+		var createLeftDiv = document.createElement('li');
+		var createRightDiv = document.createElement('li');
+
+		var createCompany = document.createElement('h2');
+		var createDate = document.createElement('h6');
+		var createTitle = document.createElement('h5');
+
+		var createNotesLabel = document.createElement('h5');
+		var createNotes = document.createElement('textarea');
+		var createRatingsLabel = document.createElement('h5');
+
+		var createCloseBtn = document.createElement('button');
+
+		// Company
+		createCompany.textContent = newObj[i].company;
+		createCompany.classList.add('company');
+
+		// Date
+		createDate.textContent = "Date Applied: " + newObj[i].date;
+		createDate.classList.add('date');
+
+		// NotesLabel & Notes
+		createNotes.textContent = newObj[i].notes;
+		createNotes.classList.add('notes', 'form-control');
+
+		// Job Title
+		createTitle.textContent = "Position type: " + newObj[i].jobTitle;
+		createTitle.classList.add('title')
+
+		// Yellow Close Btn
+		createCloseBtn.textContent = "Close";
+		createCloseBtn.classList.add('btn', 'btn-yellow', 'btn-md', 'closeBtn');
+
+		// Newly Created Job
+		createLeftDiv.classList.add('leftDiv', 'animated', 'fadeOut');
+
+		createLeftDiv.appendChild(createCompany);
+		createLeftDiv.appendChild(createCloseBtn);
+		createLeftDiv.appendChild(createDate);
+		createLeftDiv.appendChild(createTitle);
+		createLeftDiv.appendChild(createNotesLabel);
+		createLeftDiv.appendChild(createNotes);
+		createLeftDiv.appendChild(createRatingsLabel);
+		
+
+		document.getElementById('jobList').appendChild(createLeftDiv);
+
+		// Gives an id number to each created obj/div
+		// newObj.id=counter;
+
+
+		// break;
+	}
+
+	// var selectBtn = document.querySelectorAll('.btn-yellow');
+	// var selectLi = document.querySelectorAll('.leftDiv');
+	
+	// for(i=0; i<selectBtn.length; i++){
+	// 	selectBtn[i].addEventListener('click', function(){
+	// 		var div = this.parentElement;
+	//     	var on = div.style.display = "none";
+	//     	// div.classList.toggle('changeLeftDivBg')
+	//     	console.log(selectBtn)
+
+	// 	})
+	// }
+};
+
+
+
+// Sort by Company
 document.getElementById('sortCompany').addEventListener('click', function(){
-	console.log(sortBy(copy(newJobArray), "company")); 
+	var func = sortBy(newJobArray, "company");
+	console.log(func);
 })
 
 
+// Sort by job Title
+document.getElementById('sortJobTitle').addEventListener('click', function(){
+	var func = sortBy(newJobArray, "jobTitle");
+	console.log(func);
+	document.getElementById('jobList').innerHTML = "";
+	// Create a function that appends newJobsArray stuff
+	createSortedJobs(newJobArray)
+})
 
 
