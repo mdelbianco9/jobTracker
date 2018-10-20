@@ -5,7 +5,7 @@ var newJobArray = [];
 var date = new Date();
  // Gets info from Inputs 
 var getCompany = document.getElementById('company');
-var getDate = date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
+var getDate = date.getMonth()  + "/" + date.getDay() + "/" + date.getFullYear();
 var getJobTitle = document.getElementById('jobTitle');
 var getAppLink = document.getElementById('appLink');
 var getNotes = document.getElementById('notes');
@@ -34,10 +34,17 @@ function pushToArray(arr, object){
 	arr.push(object);
 }
 
+// Closes Li when Close btn is clicked
+var close = document.getElementsByClassName("closeBtn");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
 
 
-// Function for button, creates constructor
-var counter = 0;
 function createJob() {
 
 	// Creates new job from inputs
@@ -83,7 +90,7 @@ function createJob() {
 		createCloseBtn.classList.add('btn', 'btn-yellow', 'btn-md', 'closeBtn');
 
 		// Newly Created Job
-		createLeftDiv.classList.add('leftDiv', 'animated', 'fadeOut');
+		createLeftDiv.classList.add('leftDiv', 'effect7', 'animated', 'fadeOut');
 
 		createLeftDiv.appendChild(createCompany);
 		createLeftDiv.appendChild(createCloseBtn);
@@ -93,30 +100,21 @@ function createJob() {
 		createLeftDiv.appendChild(createNotes);
 		createLeftDiv.appendChild(createRatingsLabel);
 		
-
 		document.getElementById('jobList').appendChild(createLeftDiv);
 
-		// Gives an id number to each created obj/div
-		newObj.id=counter;
-
+		// Closes Li when clos eis clicked
+		for (i = 0; i < close.length; i++) {
+		    close[i].onclick = function() {
+		      var div = this.parentElement;
+		      div.style.display = "none";
+	    	}
+	  	}
 
 		break;
 	}
-
-	// var selectBtn = document.querySelectorAll('.btn-yellow');
-	// var selectLi = document.querySelectorAll('.leftDiv');
-	
-	// for(i=0; i<selectBtn.length; i++){
-	// 	selectBtn[i].addEventListener('click', function(){
-	// 		var div = this.parentElement;
-	//     	var on = div.style.display = "none";
-	//     	// div.classList.toggle('changeLeftDivBg')
-	//     	console.log(selectBtn)
-
-	// 	})
-	// }
 };
 
+// Click on List item to turn red
 var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
@@ -124,16 +122,6 @@ list.addEventListener('click', function(ev) {
     console.log(ev.target);
   }
 }, false);
-
-
-// Copy newJobArray
-function copy(arr){
-	var copy = [];
-	for(i=0; i<arr.length; i++){
-		copy.push(arr[i]);
-	}
-	return copy;
-}
 
 
 // Dynamic sort function
@@ -151,10 +139,8 @@ function sortBy(someObjArray, prop){
 }
 
 function createSortedJobs(newObj) {
-
 	// Goes through the newly created Constr Obj and does stuff 
 	for(i=0; i<newObj.length; i++){
-
 
 		var createLeftDiv = document.createElement('li');
 		var createRightDiv = document.createElement('li');
@@ -190,7 +176,7 @@ function createSortedJobs(newObj) {
 		createCloseBtn.classList.add('btn', 'btn-yellow', 'btn-md', 'closeBtn');
 
 		// Newly Created Job
-		createLeftDiv.classList.add('leftDiv', 'animated', 'fadeOut');
+		createLeftDiv.classList.add('leftDiv', 'effect7', 'animated', 'fadeOut');
 
 		createLeftDiv.appendChild(createCompany);
 		createLeftDiv.appendChild(createCloseBtn);
@@ -200,8 +186,8 @@ function createSortedJobs(newObj) {
 		createLeftDiv.appendChild(createNotes);
 		createLeftDiv.appendChild(createRatingsLabel);
 		
-
 		document.getElementById('jobList').appendChild(createLeftDiv);
+
 
 		// Gives an id number to each created obj/div
 		// newObj.id=counter;
@@ -209,19 +195,6 @@ function createSortedJobs(newObj) {
 
 		// break;
 	}
-
-	// var selectBtn = document.querySelectorAll('.btn-yellow');
-	// var selectLi = document.querySelectorAll('.leftDiv');
-	
-	// for(i=0; i<selectBtn.length; i++){
-	// 	selectBtn[i].addEventListener('click', function(){
-	// 		var div = this.parentElement;
-	//     	var on = div.style.display = "none";
-	//     	// div.classList.toggle('changeLeftDivBg')
-	//     	console.log(selectBtn)
-
-	// 	})
-	// }
 };
 
 
@@ -230,6 +203,9 @@ function createSortedJobs(newObj) {
 document.getElementById('sortCompany').addEventListener('click', function(){
 	var func = sortBy(newJobArray, "company");
 	console.log(func);
+	document.getElementById('jobList').innerHTML = "";
+	createSortedJobs(newJobArray)
+	
 })
 
 
@@ -241,5 +217,9 @@ document.getElementById('sortJobTitle').addEventListener('click', function(){
 	// Create a function that appends newJobsArray stuff
 	createSortedJobs(newJobArray)
 })
+
+
+
+
 
 
