@@ -102,6 +102,14 @@ function createJob() {
 		
 		document.getElementById('jobList').appendChild(createLeftDiv);
 
+		// Makes the new list item apppend to the beggining of the list
+		document.getElementById('jobList').insertBefore(createLeftDiv, list.firstChild);
+
+		// Makes it so the transition effect can happen
+		setTimeout(function(){
+			createLeftDiv.classList.add('show');
+		},100);
+
 		// Closes Li when clos eis clicked
 		for (i = 0; i < close.length; i++) {
 		    close[i].onclick = function() {
@@ -176,7 +184,7 @@ function createSortedJobs(newObj) {
 		createCloseBtn.classList.add('btn', 'btn-yellow', 'btn-md', 'closeBtn');
 
 		// Newly Created Job
-		createLeftDiv.classList.add('leftDiv', 'effect7', 'animated', 'fadeOut');
+		createLeftDiv.classList.add('leftDiv', 'effect7', 'show');
 
 		createLeftDiv.appendChild(createCompany);
 		createLeftDiv.appendChild(createCloseBtn);
@@ -187,11 +195,6 @@ function createSortedJobs(newObj) {
 		createLeftDiv.appendChild(createRatingsLabel);
 		
 		document.getElementById('jobList').appendChild(createLeftDiv);
-
-
-		// Gives an id number to each created obj/div
-		// newObj.id=counter;
-
 
 		// break;
 	}
