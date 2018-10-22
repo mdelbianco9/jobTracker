@@ -2,10 +2,21 @@
 // Holds the new const Objs created by clicking on Submit
 var newJobArray = [];
 
+// Date Stuff
 var date = new Date();
+var dates = [];
+var getDate = date;
+dates.push(getDate.toString().split(' '));
+console.log(dates)
+var day = dates[0][0];
+var month = dates[0][1];
+var date = dates[0][2];
+var year = dates[0][3];
+var theDate = day + " " + month + " " + date + " " + year;
+console.log(theDate);
+
  // Gets info from Inputs 
 var getCompany = document.getElementById('company');
-var getDate = date.getMonth()  + "/" + date.getDay() + "/" + date.getFullYear();
 var getJobTitle = document.getElementById('jobTitle');
 var getAppLink = document.getElementById('appLink');
 var getNotes = document.getElementById('notes');
@@ -48,7 +59,7 @@ for (i = 0; i < close.length; i++) {
 function createJob() {
 
 	// Creates new job from inputs
-	var newObj = new Job(getCompany.value, getDate, getJobTitle.value, getAppLink.value, getNotes.value)
+	var newObj = new Job(getCompany.value, theDate, getJobTitle.value, getAppLink.value, getNotes.value)
 
 	console.log(newJobArray)
 
@@ -90,7 +101,7 @@ function createJob() {
 		createCloseBtn.classList.add('btn', 'btn-yellow', 'btn-md', 'closeBtn');
 
 		// Newly Created Job
-		createLeftDiv.classList.add('leftDiv', 'effect7', 'animated', 'fadeOut');
+		createLeftDiv.classList.add('leftDiv', 'effect7');
 
 		createLeftDiv.appendChild(createCompany);
 		createLeftDiv.appendChild(createCloseBtn);
@@ -103,7 +114,9 @@ function createJob() {
 		document.getElementById('jobList').appendChild(createLeftDiv);
 
 		// Makes the new list item apppend to the beggining of the list
-		document.getElementById('jobList').insertBefore(createLeftDiv, list.firstChild);
+		var list = document.getElementById('jobList');
+		document.getElementById('jobList').insertBefore(createLeftDiv, list.childNodes[0]);
+		
 
 		// Makes it so the transition effect can happen
 		setTimeout(function(){
@@ -120,7 +133,30 @@ function createJob() {
 
 		break;
 	}
+	// Focuses on the fist input
+		getCompany.focus();
+
+		// Clears inputs upon submission
+		var inputs = document.getElementsByClassName('clear');
+		setTimeout(function(){
+			for(i=0; i<inputs.length; i++){
+			inputs[i].value = "";	
+		}
+	}, 500);
+		
 };
+
+// Invokes createJob() function on press of enter key for all inputs
+var inputs = document.getElementsByClassName('form-control');
+for(i=0; i<inputs.length; i++){
+	inputs[i].addEventListener('keypress', function(event){
+	if(event.keyCode === 13){
+		createJob();
+
+	}
+});
+}
+
 
 // Click on List item to turn red
 var list = document.querySelector('ul');
@@ -196,6 +232,19 @@ function createSortedJobs(newObj) {
 		
 		document.getElementById('jobList').appendChild(createLeftDiv);
 
+		// Focuses on the fist input
+		getCompany.focus();
+
+		// THIS IS CAUSING MY 2ND CHILD TO DISAPEAR!!!
+		// Closes Li when close is clicked
+		for (i = 0; i < close.length; i++) {
+		    close[i].onclick = function() {
+		      var div = this.parentElement;
+		      div.style.display = "none";
+	    	}
+	  	}
+
+
 		// break;
 	}
 };
@@ -222,7 +271,11 @@ document.getElementById('sortJobTitle').addEventListener('click', function(){
 })
 
 
-
+// Chaneg Theme
+document.getElementById('changeTheme').addEventListener('click', function(){
+	document.getElementById('jobEntry').style.backgroundColor = "red";
+	document.getElementById('side-nav').style.backgroundColor = "red";
+})
 
 
 

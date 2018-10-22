@@ -13,6 +13,7 @@
 	
 	<!-- CSS -->
 	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
 </head>
 
 <body class="">
@@ -22,18 +23,18 @@
 			<section class="col-md-5" id="jobEntry">
 				<div class="row">
 					<nav class="side-nav">
-						<div class="menu">
+						<div class="menu" id="side-nav">
 						  <div class="menuItem uno" id="sortCompany">Sort:<span>Company</span></div>
 						  <div class="menuItem dos">Sort:<span>Date</span></div>
 						  <div class="menuItem tres" id="sortJobTitle">Sort<span>Position</span></div>
-						  <div class="menuItem cuatro">Change<span>Theme</span></div>
+						  <div class="menuItem cuatro" id="changeTheme">Change<span>Theme</span></div>
 						  <div class="menuItem cinco">Reset<span>Theme</span></div>
 						</div>
 					</nav>
 					<div class="form-wrapper">
 						<div class="form-group">
 						  <label for="usr">Company</label>
-						  <input type="text" class="form-control" id="company">
+						  <input type="text" class="form-control clear" id="company" autofocus>
 						</div>
 						<!-- <div class="form-group">
 						  <label for="pwd">Date Applied</label>
@@ -41,17 +42,17 @@
 						</div> -->
 						<div class="form-group">
 						  <label for="pwd">Job Title</label>
-						  <input class="form-control" id="jobTitle">
+						  <input class="form-control clear" id="jobTitle">
 						</div>
 						<div class="form-group">
 						  <label for="pwd">Application Link</label>
-						  <input class="form-control" id="appLink">
+						  <input class="form-control clear" id="appLink">
 						</div>
 						<div class="form-group">
 						  <label for="pwd">Notes</label>
-						  <textarea class="form-control" id="notes"></textarea>
+						  <textarea class="form-control clear" id="notes"></textarea>
 						</div>
-						<button type="button" class="btn btn-green btn-lg" onclick="createJob()">Submit Job</button>
+						<button type="button" class="btn btn-green btn-lg" id="submit" onclick="createJob()">Submit Job</button>
 					</div>
 				</div>
 
